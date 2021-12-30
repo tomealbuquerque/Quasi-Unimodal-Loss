@@ -37,6 +37,26 @@ def neighbor_loss(margin, Yhat, Y):
         loss += torch.mean(reg_gt + reg_lt)
     return loss
 
+def quasi_unimodal_loss(margin, Yhat, Y):
+    margin = torch.tensor(margin, device=device)
+    
+    P = F.softmax(Yhat, -1)
+    K = P.shape[1]
+    loss = 0
+    
+    for k in range(K-1):
+        # force close neighborhoods to be inferior to True class prob
+        neigh_gt = (k == Y-1).float() * F.relu(margin+P[:, k]-P[:, Y])
+        neigh_lt = (k == Y+1).float() * F.relu(margin+P[:, k]-P[:, Y])
+        
+        # force previous probability to be inferior than close neighborhoods of true class
+        reg_gt = (Y > k+1).float() * F.relu(margin+P[:,  k-1]-P[:, Y-1])
+        reg_lt = (Y < k).float() * F.relu(margin+P[:, k+1]-P[:, Y])
+        
+        #total loss - neigh + reg
+        loss += torch.mean(neigh_gt + neigh_lt + reg_gt + reg_lt)
+    return loss
+
 # Models
 
 class Base(nn.Module):
@@ -170,3 +190,29 @@ class HO2(Base):
 
     def loss(self, Yhat, Y):
         return self.lambda_*entropy_loss(Yhat) + neighbor_loss(self.omega, Yhat, Y)
+
+class QUL(Base):
+    def __init__(self, pretrained_model, K, omega):
+        super().__init__(pretrained_model, K)
+        self.omega = omega
+
+    def loss(self, Yhat, Y):
+        return quasi_unimodal_loss(self.omega, Yhat, Y)
+
+class QUL_HO(Base):
+    def __init__(self, pretrained_model, K, lambda_, omega):
+        super().__init__(pretrained_model, K)
+        self.lambda_ = lambda_
+        self.omega = omega
+
+    def loss(self, Yhat, Y):
+        return self.lambda_*entropy_loss(Yhat) + quasi_unimodal_loss(self.omega, Yhat, Y)
+    
+class QUL_CE(Base):
+    def __init__(self, pretrained_model, K, omega):
+        super().__init__(pretrained_model, K)
+        self.omega = omega
+
+    def loss(self, Yhat, Y):
+        return ce(Yhat, Y) + quasi_unimodal_loss(self.omega, Yhat, Y)
+
