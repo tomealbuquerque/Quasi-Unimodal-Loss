@@ -15,7 +15,7 @@ Ordinal classification tasks are present in a large number of different domains.
 
 ## Code organization
 ```
-Quasi-Unimodal-Loss/
+**Quasi-Unimodal-Loss/**
 ├── datasets/
 │   ├── prepare_afad.py
 │   ├── prepare_FocusPath.py
