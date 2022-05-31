@@ -9,6 +9,9 @@ Ordinal classification tasks are present in a large number of different domains.
 
 ![eq1](https://github.com/tomealbuquerque/Quasi-Unimodal-Loss/blob/main/figures/eq1.png)
 
+![graph](https://github.com/tomealbuquerque/Quasi-Unimodal-Loss/blob/main/figures/barchart.png)
+
+![eq2](https://github.com/tomealbuquerque/Quasi-Unimodal-Loss/blob/main/figures/eq1.png)
 ## Usage
 
   1. Run datasets\prepare_.....py to generate the data.
