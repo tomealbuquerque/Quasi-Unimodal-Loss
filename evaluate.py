@@ -1,6 +1,6 @@
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset', choices=['herlev', 'afad'], default='afad')
+parser.add_argument('--dataset', choices=['herlev', 'afad', 'focuspath'], default='afad')
 parser.add_argument('metric')
 parser.add_argument('K', type=int)
 parser.add_argument('outputs', nargs='+')

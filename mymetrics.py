@@ -1,6 +1,6 @@
 from sklearn import metrics
 from scipy import stats
-from wilson_metric import wilson_index
+from utils.wilson_metric import wilson_index
 import numpy as np
 
 def to_classes(p, method):
