@@ -15,7 +15,24 @@ Ordinal classification tasks are present in a large number of different domains.
 
 ## Code organization
 
-  * **data:** avaiable at: http://mde-lab.aegean.gr/index.php/downloads
+Quasi-Unimodal-Loss/
+├─ datasets/
+│  ├─ prepare_afad.py
+│  ├─ prepare_FocusPath.py
+│  ├─ prepare_herlev.py
+├─ utils/
+│  ├─ merge_tables.py
+│  ├─ wilson_metric.py
+│  ├─ evaluate_toclass.py
+├─ mydatasets.py
+├─ evaluate.py
+├─ mymodels.py
+├─ mymetrics.py
+├─ train.py
+├─ train.sh
+├─ tables.sh
+
+  * **data:** All the datasets used in this work are publicly available: Herlev dataset—http://mde-lab.aegean.gr/index.php/downloads (accessed on: 5 November 2021); FocusPath dataset—https://zenodo.org/record/3926181#.YPFgluhKjIU (accessed on: 5 November 2021); AFAD dataset—https://github.com/afad-dataset/tarball (accessed on: 10 November 2021).
   * **train.py:** train the different models with the different ordinal losses
     and outputs probabilities.
   * **evaluate.py:** generate latex tables with results using the output
