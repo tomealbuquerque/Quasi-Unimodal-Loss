@@ -20,7 +20,7 @@ from torch.utils.data import Dataset, DataLoader, Subset
 def escape(s):
     return s.replace('_', f'\_')
 
-#YY = [pickle.load(open(f'data/k12.pickle', 'rb'))[fold]['test'][1] for fold in range(1)]
+#YY = [pickle.load(open(f'data/k12.pickle', 'rb'))[fold]['test'][1] for fold in range(10)]
 ds = getattr(mydatasets, f'{args.dataset.title()}_Dataset')
 ts_ds = ds('test', 0, mydatasets.val_transforms, args.K)
 ts = DataLoader(ts_ds, 1, pin_memory=True)
