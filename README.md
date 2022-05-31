@@ -33,7 +33,10 @@ Quasi-Unimodal-Loss/
 └── tables.sh
 
 ```
-  * **data:** All the datasets used in this work are publicly available: Herlev dataset—http://mde-lab.aegean.gr/index.php/downloads (accessed on: 5 November 2021); FocusPath dataset—https://zenodo.org/record/3926181#.YPFgluhKjIU (accessed on: 5 November 2021); AFAD dataset—https://github.com/afad-dataset/tarball (accessed on: 10 November 2021).
+  * **data:** All the datasets used in this work are publicly available: 
+  ** Herlev dataset—http://mde-lab.aegean.gr/index.php/downloads (accessed on: 5 November 2021);\\
+  ** FocusPath dataset—https://zenodo.org/record/3926181#.YPFgluhKjIU (accessed on: 5 November 2021);\\
+  ** AFAD dataset—https://github.com/afad-dataset/tarball (accessed on: 10 November 2021).\\
   * **train.py:** train the different models with the different ordinal losses
     and outputs probabilities.
   * **evaluate.py:** generate latex tables with results using the output
