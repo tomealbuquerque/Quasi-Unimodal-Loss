@@ -6,7 +6,7 @@ by by Tomé Albuquerque, Ricardo Cruz, Jaime S. Cardoso
 
 ## Introduction
 Ordinal classification tasks are present in a large number of different domains. However, common losses for deep neural networks, such as cross-entropy, do not properly weight the relative ordering between classes. For that reason, many losses have been proposed in the literature, which model the output probabilities as following a unimodal distribution. This manuscript reviews many of these losses on three different datasets and suggests a potential improvement that focuses the unimodal constraint on the neighborhood around the true class, allowing for a more flexible distribution, aptly called quasi-unimodal loss. For this purpose, two constraints are proposed: A first constraint concerns the relative order of the top-three probabilities, and a second constraint ensures that the remaining output probabilities are not higher than the top three. Therefore, gradient descent focuses on improving the decision boundary around the true class in detriment to the more distant classes. The proposed loss is found to be competitive in several cases.
-
+<img src="https://github.com/tomealbuquerque/Quasi-Unimodal-Loss/blob/main/figures/eq1.png" width="100" height="100">
 ![eq1](https://github.com/tomealbuquerque/Quasi-Unimodal-Loss/blob/main/figures/eq1.png)
 
 ![graph](https://github.com/tomealbuquerque/Quasi-Unimodal-Loss/blob/main/figures/barchart.png)
