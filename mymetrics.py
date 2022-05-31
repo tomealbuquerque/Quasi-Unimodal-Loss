@@ -22,6 +22,9 @@ def bacc(y, yhat):
 
 def mae(y, yhat):
     return metrics.mean_absolute_error(y, yhat)
+    
+def mse(y, yhat):
+    return metrics.mean_squared_error(y, yhat)
 
 def amae(y, yhat):
     K = y.max()+1
@@ -71,6 +74,7 @@ properties = {
     'acc': ('max', 100, 1, False),
     'bacc': ('max', 100, 1, False),
     'mae': ('min', 1, 2, False),
+    'mse': ('min', 1, 2, False),
     'amae': ('min', 1, 2, False),
     'f1': ('max', 100, 1, False),
     'wilson': ('min', 100, 1, False),
@@ -81,9 +85,10 @@ properties = {
 
 def evaluate(YY, K, outputs, proba, architecture, method, metric, toclass):
     scores = []
-    for fold in range(10):
-        Y = YY[fold]
-        start = f'output-architecture-{architecture}-method-{method}-K-{K}-fold-{fold}-'
+    for fold in range(3):
+        Y = YY
+        #Y = YY[fold]
+        start = f'output-dataset-afad-architecture-{architecture}-method-{method}-fold-{fold}-K-{K}-'
         filename = [o for o in outputs if o.split('/')[-1].startswith(start)]
         assert len(filename), f'Empty filenames starting with {start}'
         Yhat = np.loadtxt(filename[0], delimiter=',')
